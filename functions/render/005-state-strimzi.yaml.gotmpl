@@ -1,0 +1,16 @@
+{{- $state := $.state }}
+{{- $spec := $state.spec.effective }}
+
+{{- /* Build strimzi-specific computed state */}}
+{{- $strimzi := dict
+  "name" $spec.name
+  "namespace" $spec.namespace
+  "labels" $spec.labels
+  "managementPolicies" $spec.managementPolicies
+  "providerConfigRef" $spec.providerConfigRef
+  "values" $spec.values
+  "overrideAllValues" $spec.overrideAllValues
+}}
+
+{{- /* Store computed state */}}
+{{- $_ := set $state "strimzi" $strimzi }}

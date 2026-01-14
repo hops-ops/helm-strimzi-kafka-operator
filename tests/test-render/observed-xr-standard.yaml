@@ -1,0 +1,18 @@
+apiVersion: helm.hops.ops.com.ai/v1alpha1
+kind: StrimziKafkaOperator
+metadata:
+  name: strimzi-kafka-operator
+  namespace: example-env
+  uid: test-uid-standard
+spec:
+  clusterName: my-cluster
+  namespace: strimzi
+  labels:
+    team: platform
+    environment: production
+  providerConfigRef:
+    name: my-cluster
+    kind: ProviderConfig
+  values:
+    watchAnyNamespace: true
+    replicas: 1

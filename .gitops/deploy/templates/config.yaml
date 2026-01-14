@@ -1,0 +1,18 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Configuration
+metadata:
+  name: helm-strimzi-kafka-operator
+spec:
+  package: ghcr.io/hops-ops/helm-strimzi-kafka-operator:{{ .Values.version }}
+{{- if .Values.skipDependencyResolution }}
+  skipDependencyResolution: true
+{{- end }}
+{{- if .Values.skipDependencyResolution }}
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Function
+metadata:
+  name: hops-ops-helm-strimzi-kafka-operatorrender
+spec:
+  package: ghcr.io/hops-ops/helm-strimzi-kafka-operatorrender:{{ .Values.version }}
+{{- end }}
